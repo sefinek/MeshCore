@@ -857,17 +857,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#view-this-nodes-firmware-version" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        View this node's firmware version
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#view-this-nodes-configured-role" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1216,6 +1205,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#define-region-hierarchy-single-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Define region hierarchy (single line)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#remove-a-region" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1349,10 +1349,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#view-or-change-thevalue-of-a-sensor" class="md-nav__link">
+  <a href="#view-or-change-the-value-of-a-sensor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        View or change thevalue of a sensor
+        View or change the value of a sensor
       
     </span>
   </a>
@@ -2394,17 +2394,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#view-this-nodes-firmware-version" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        View this node's firmware version
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#view-this-nodes-configured-role" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2753,6 +2742,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#define-region-hierarchy-single-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Define region hierarchy (single line)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#remove-a-region" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2886,10 +2886,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#view-or-change-thevalue-of-a-sensor" class="md-nav__link">
+  <a href="#view-or-change-the-value-of-a-sensor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        View or change thevalue of a sensor
+        View or change the value of a sensor
       
     </span>
   </a>
@@ -3345,9 +3345,6 @@
 <h4 id="view-this-nodes-public-key">View this node's public key</h4>
 <p><strong>Usage:</strong> <code>get public.key</code></p>
 <hr />
-<h4 id="view-this-nodes-firmware-version">View this node's firmware version</h4>
-<p><strong>Usage:</strong> <code>ver</code></p>
-<hr />
 <h4 id="view-this-nodes-configured-role">View this node's configured role</h4>
 <p><strong>Usage:</strong> <code>get role</code></p>
 <hr />
@@ -3383,7 +3380,7 @@
   - <code>3</code>: DO NOT USE (Reserved) </p>
 <p><strong>Default:</strong> <code>0</code></p>
 <p><strong>Note:</strong> the 'path.hash.mode' sets the low-level ID/hash encoding size used when the repeater adverts. This setting has no impact on what packet ID/hash size this repeater forwards, all sizes should be forwarded on firmware &gt;= 1.14. This feature was added in firmware 1.14</p>
-<p><strong>Temporary Note:</strong> adverts with ID/hash sizes of 2 or 3 bytes may have limited flood propogation in your network while this feature is new as v1.13.0 firmware and older will drop packets with multibyte path ID/hashes as only 1-byte hashes are suppored. Consider your install base of firmware &gt;=1.14 has reached a criticality for effective network flooding before implementing higher ID/hash sizes. </p>
+<p><strong>Temporary Note:</strong> adverts with ID/hash sizes of 2 or 3 bytes may have limited flood propagation in your network while this feature is new as v1.13.0 firmware and older will drop packets with multibyte path ID/hashes as only 1-byte hashes are supported. Consider your install base of firmware &gt;=1.14 has reached a criticality for effective network flooding before implementing higher ID/hash sizes. </p>
 <hr />
 <h4 id="view-or-change-this-nodes-loop-detection">View or change this node's loop detection</h4>
 <p><strong>Usage:</strong>
@@ -3406,6 +3403,7 @@
 <p><strong>Parameters:</strong>
 - <code>value</code>: Transmit delay factor (0-2)</p>
 <p><strong>Default:</strong> <code>0.5</code></p>
+<p><strong>Note:</strong> When multiple nearby repeaters all hear the same flood packet, each waits a random amount of time before retransmitting to avoid simultaneous collisions. This factor scales the size of that random window. Higher values reduce collision risk at the cost of added latency. <code>0</code> disables the window entirely.</p>
 <hr />
 <h4 id="view-or-change-the-retransmit-delay-factor-for-direct-traffic">View or change the retransmit delay factor for direct traffic</h4>
 <p><strong>Usage:</strong>
@@ -3414,6 +3412,7 @@
 <p><strong>Parameters:</strong>
 - <code>value</code>: Direct transmit delay factor (0-2)</p>
 <p><strong>Default:</strong> <code>0.2</code></p>
+<p><strong>Note:</strong> Same collision-avoidance random window as <code>txdelay</code>, but applied to direct (non-flood, routed) traffic. The default is lower because direct packets are addressed to a specific next hop, so far fewer nodes compete to retransmit them.</p>
 <hr />
 <h4 id="experimental-view-or-change-the-processing-delay-for-received-traffic">[Experimental] View or change the processing delay for received traffic</h4>
 <p><strong>Usage:</strong>
@@ -3422,6 +3421,7 @@
 <p><strong>Parameters:</strong>
 - <code>value</code>: Receive delay base (0-20)</p>
 <p><strong>Default:</strong> <code>0.0</code></p>
+<p><strong>Note:</strong> When enabled, repeaters that received a flood packet with a weak signal are held in a delay queue before processing, while those that received it with a strong signal process it immediately. This gives strong-signal paths forwarding priority. By the time weak-signal nodes process their copy, the packet may have already propagated and will be suppressed as a duplicate, reducing redundant retransmissions.</p>
 <hr />
 <h4 id="view-or-change-the-duty-cycle-limit">View or change the duty cycle limit</h4>
 <p><strong>Usage:</strong>
@@ -3585,6 +3585,34 @@
 - <code>name</code>: Region name
 - <code>parent_name</code>: Parent region name (optional, defaults to wildcard)</p>
 <hr />
+<h4 id="define-region-hierarchy-single-line">Define region hierarchy (single line)</h4>
+<p><strong>Usage:</strong>
+- <code>region def &lt;token&gt; [&lt;token&gt; ...]</code></p>
+<p><strong>Parameters (tokens):</strong> Space-separated. A logical <strong>cursor</strong> starts at the wildcard <code>*</code>.</p>
+<ul>
+<li><strong><code>name</code></strong> — Create <code>name</code> as a child of the current cursor (equivalent to <code>region put name</code> with the cursor as parent). Cursor moves to <code>name</code>.</li>
+<li><strong><code>name|jump</code></strong> <em>(or <code>name,jump</code>)</em> — Create <code>name</code> as a child of the current cursor, then move the cursor to <code>jump</code> (must already exist on the node, or have been created earlier in this command). <code>jump</code> is <strong>not</strong> the parent of <code>name</code>; use this form to pop back up and start another branch.</li>
+</ul>
+<p><strong>Behavior:</strong> Each created region defaults to flood-allowed (same as <code>region put</code>). The reply is the resulting region tree (same format as bare <code>region</code>); review it before running <code>region save</code> to persist. On error, the reply is <code>Err - ...</code> and any regions placed before the failure remain on the node, just like a partial chain of <code>region put</code>.</p>
+<p><strong>Existing regions:</strong> <code>region def</code> does not clear the existing tree — if a name already exists, its parent is updated to the current cursor; otherwise a new region is created. To start from scratch, <code>region remove</code> the unwanted regions first.</p>
+<p><strong>Limits:</strong> Repeater serial accepts one line up to <strong>160 characters</strong>. For larger trees, split across multiple <code>region def</code> commands; the cursor resets to <code>*</code> between commands, so lead the next command with <code>child|ancestor</code> to reposition. Each token splits at most once on <code>|</code> — <code>region def a|b|c|d</code> is not a flat-list shorthand; see the flat-list example below.</p>
+<p><strong>Example — linear chain</strong> (each token becomes a child of the previous):</p>
+<pre><code>region def a b c d e
+region save
+</code></pre>
+<p><strong>Example — branched tree</strong> (equivalent to <code>region put a</code>, <code>region put b a</code>, <code>region put c b</code>, <code>region put d c</code>, <code>region put e b</code>, <code>region put f e</code>):</p>
+<pre><code>region def a b c d|b e f
+region save
+</code></pre>
+<p><strong>Example — error and partial state:</strong></p>
+<pre><code>region def a b c|nope d
+</code></pre>
+<p>The reply is <code>Err - unknown jump: nope</code>. <code>a</code>, <code>b</code>, and <code>c</code> were placed before the failure; <code>d</code> was not. Run <code>region</code> to inspect, then re-run with a corrected jump or repair with <code>region remove</code> / <code>region put</code>.</p>
+<p><strong>Example — flat list</strong> (each region a child of <code>*</code>). Use <code>|*</code> after each token to pop the cursor back to the root before the next token:</p>
+<pre><code>region def a|* b|* c|* d|* e|* f
+region save
+</code></pre>
+<hr />
 <h4 id="remove-a-region">Remove a region</h4>
 <p><strong>Usage:</strong> 
 - <code>region remove &lt;name&gt;</code></p>
@@ -3712,7 +3740,7 @@ region save
 - <code>start</code>: Optional starting index (defaults to 0)</p>
 <p><strong>Note:</strong> Output format: <code>&lt;var_name&gt;=&lt;value&gt;\n</code></p>
 <hr />
-<h4 id="view-or-change-thevalue-of-a-sensor">View or change thevalue of a sensor</h4>
+<h4 id="view-or-change-the-value-of-a-sensor">View or change the value of a sensor</h4>
 <p><strong>Usage:</strong> 
 - <code>sensor get &lt;key&gt;</code>
 - <code>sensor set &lt;key&gt; &lt;value&gt;</code></p>
