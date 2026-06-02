@@ -2765,7 +2765,7 @@ Advert means to advertise yourself on the network. In Reticulum terms it would b
 <code>set prv.key &lt;hex&gt;</code> to set a repeater's private key on the serial console</p>
 <p>Reboot the repeater after <code>set prv.key &lt;hex&gt;</code> command for the new private key to take effect.</p>
 <h3 id="36-q-the-first-byte-of-my-repeaters-public-key-collides-with-an-existing-repeater-on-the-mesh-how-do-i-get-a-new-private-key-with-a-matching-public-key-that-has-its-first-byte-of-my-choosing">3.6. Q: The first byte of my repeater's public key collides with an existing repeater on the mesh. How do I get a new private key with a matching public key that has its first byte of my choosing?</h3>
-<p><strong>A:</strong> You can generate a new private key and specify the first byte of its public key here:  https://gessaman.com/mc-keygen/</p>
+<p><strong>A:</strong> You can generate a new private key and specify the first byte of its public key here: <a href="https://gessaman.com/mc-keygen">https://gessaman.com/mc-keygen</a></p>
 <p>Having multiple repeaters with the same first byte ID does not negatively affect the mesh or its functionality. Flood and pathed packets will still reach their destinations. First byte ID collision makes traceroute and path analysis harder because these tools don't know exactly which of the two (or more) colliding repeaters is the one in the path.</p>
 <p>Best practice is when you set up a new repeater, choose a public key that is not in use. If it is not possible to find a unique first byte for your repeater's public key, choose one that is unique within about 10 miles (16 km) to minimize collision with nearby repeaters.</p>
 <h3 id="37-q-my-repeater-may-be-suffering-from-deafness-due-to-high-power-interference-near-my-meshs-frequency-it-is-not-hearing-other-in-range-meshcore-radios-what-can-i-do">3.7. Q: My repeater may be suffering from deafness due to high power interference near my mesh's frequency, it is not hearing other in-range MeshCore radios. What can I do?</h3>
@@ -2886,7 +2886,7 @@ https://github.com/meshcore-dev/MeshCore/blob/main/src/Packet.h#L19</p>
 <p><strong>A:</strong></p>
 <p><strong>BW is bandwidth</strong> - width of frequency spectrum that is used for transmission</p>
 <p><strong>SF is spreading factor</strong> - how much should the communication spread in time</p>
-<p><strong>CR is coding rate</strong> - from: https://www.thethingsnetwork.org/docs/lorawan/fec-and-code-rate/</p>
+<p><strong>CR is coding rate</strong> - from: <a href="https://www.thethingsnetwork.org/docs/lorawan/fec-and-code-rate">https://www.thethingsnetwork.org/docs/lorawan/fec-and-code-rate</a></p>
 <p>TL;DR: default CR to 5 for good stable links. If it is not a solid link and is intermittent, change CR to 7 or 8.</p>
 <p>Forward Error Correction is a process of adding redundant bits to the data to be transmitted. During the transmission, data may get corrupted by interference (changes from 0 to 1 / 1 to 0). These error correction bits are used at the receivers for restoring corrupted bits.</p>
 <p>The Code Rate of a forward error correction expresses the proportion of bits in a data stream that actually carry useful information.</p>
@@ -3030,12 +3030,9 @@ https://files.liamcottle.net/MeshCore</p>
 <p>Both the Windows and Mac versions of the client app are fully unlocked and are free to use.</p>
 <h3 id="516-q-are-there-any-resources-that-compare-meshcore-to-other-lora-systems">5.16. Q: Are there any resources that compare MeshCore to other LoRa systems?</h3>
 <p><strong>A:</strong> Here is a list of MeshCore comparison resources:
-The Comms Channel on YouTube:
-https://www.youtube.com/watch?v=guDoKGs02Us
-MeshCore Advantages by MCarper:
-https://github.com/mikecarper/meshfirmware/blob/main/MeshCoreAdvantages.md
-MeshCore vs Meshtastic by austinmesh.org
-https://www.austinmesh.org/learn/meshcore-vs-meshtastic</p>
+- The Comms Channel on YouTube: https://www.youtube.com/watch?v=guDoKGs02Us
+- MeshCore Advantages by MCarper: https://github.com/mikecarper/meshfirmware/blob/main/MeshCoreAdvantages.md
+- MeshCore vs Meshtastic by austinmesh.org: https://www.austinmesh.org/learn/meshcore-vs-meshtastic</p>
 <hr />
 <h2 id="6-troubleshooting">6. Troubleshooting</h2>
 <h3 id="61-q-my-client-says-another-client-or-a-repeater-or-a-room-server-was-last-seen-many-many-days-ago">6.1. Q: My client says another client or a repeater or a room server was last seen many, many days ago.</h3>
