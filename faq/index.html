@@ -2949,7 +2949,7 @@ save, then run:</p>
 <pre><code>pio run -e RAK_4631_Repeater
 </code></pre>
 <p>then you'll find <code>firmware.zip</code> in <code>.pio/build/RAK_4631_Repeater</code></p>
-<p>Andy also has a video on how to build using VS Code:
+<p>Andy also has a video on how to build using VS Code:<br />
 <em>How to build and flash Meshcore repeater firmware | Heltec V3</em>
 <a href="https://www.youtube.com/watch?v=WJvg6dt13hk">https://www.youtube.com/watch?v=WJvg6dt13hk</a> <em>(Link referenced in the Discord post)</em></p>
 <h3 id="510-q-are-there-other-meshcore-related-open-source-projects">5.10. Q: Are there other MeshCore related open source projects?</h3>
@@ -2976,22 +2976,24 @@ Below are the instructions to flash firmware onto a supported LoRa device using 
 <p>Instructions for nRF devices like RAK, T1000-E, T114 are immediately after the ESP instructions</p>
 </blockquote>
 <p>For ESP-based devices (e.g. Heltec V3) you need:</p>
-<ul>
-<li>Download firmware file from <a href="https://flasher.meshcore.io">https://flasher.meshcore.io</a><ul>
-<li>Go to the website on a browser, find the section that has the firmware you need</li>
-<li>Click the Download button, right-click on the file you need, for example,<ul>
+<ol>
+<li>Download the firmware file from <a href="https://flasher.meshcore.io">https://flasher.meshcore.io</a>.<ul>
+<li>Go to the website in a browser and find the section that has the firmware you need.</li>
+<li>Click the Download button, right-click on the file you need, for example:<ul>
 <li><code>Heltec_V3_companion_radio_ble-v1.7.1-165fb33.bin</code><ul>
-<li>Non-merged bin keeps the existing Bluetooth pairing database</li>
+<li>Non-merged bin keeps the existing Bluetooth pairing database.</li>
 </ul>
 </li>
 <li><code>Heltec_v3_companion_radio_usb-v1.7.1-165fb33-merged.bin</code><ul>
-<li>Merged bin overwrites everything including the bootloader, existing Bluetooth pairing database, but keeps configurations.</li>
+<li>Merged bin overwrites everything including the bootloader and existing Bluetooth pairing database, but keeps configurations.</li>
 </ul>
 </li>
-<li>Right-click on the file name and copy the link and note it for later use here is an example: <code>https://flasher.meshcore.io/releases/download/companion-v1.7.1/Heltec_v3_companion_radio_ble-v1.7.1-165fb33.bin</code></li>
+</ul>
+</li>
+<li>Right-click on the file name and copy the link. Here is an example: <code>https://flasher.meshcore.io/releases/download/companion-v1.7.1/Heltec_v3_companion_radio_ble-v1.7.1-165fb33.bin</code></li>
 <li>Run:<ul>
-<li><code>wget https://flasher.meshcore.io/releases/download/companion-v1.7.1/Heltec_v3_companion_radio_ble-v1.7.1-165fb33.bin</code> to download the firmware file for your device type. or the version you need  - USB, BLE, Repeater, Room Server, merged bin or non-merged bin</li>
-<li>If the above wget command only downloads a very small file (10K bytes instead of more than 100K byte, use this command instead:<ul>
+<li><code>wget https://flasher.meshcore.io/releases/download/companion-v1.7.1/Heltec_v3_companion_radio_ble-v1.7.1-165fb33.bin</code> to download the firmware file for your device type or the version you need: USB, BLE, Repeater, Room Server, merged bin or non-merged bin.</li>
+<li>If the above wget command only downloads a very small file (10K bytes instead of more than 100K byte), use this command instead:<ul>
 <li><code>wget --user-agent="Mozilla/5.0" --content-disposition "https://flasher.meshcore.io/releases/download/companion-v1.7.1/Heltec_v3_companion_radio_usb-v1.7.1-165fb33.bin"</code></li>
 </ul>
 </li>
@@ -2999,16 +3001,16 @@ Below are the instructions to flash firmware onto a supported LoRa device using 
 </li>
 </ul>
 </li>
-<li>Confirm the <code>ttyXXXX</code> device path on your Raspberry Pi:<ul>
-<li>Go to <code>/dev</code> directory, run ls command to find confirm your device path</li>
-<li>They are usually <code>/dev/ttyUSB0</code> for ESP devices</li>
-<li>For ESP-based devices, install esptool from the shell:<ul>
+<li>Confirm the <code>ttyXXXX</code> device path on your Raspberry Pi.<ul>
+<li>Go to the <code>/dev</code> directory and run the <code>ls</code> command to find your device path.</li>
+<li>It is usually <code>/dev/ttyUSB0</code> for ESP devices.</li>
+</ul>
+</li>
+<li>Install esptool from the shell.<ul>
 <li><code>pip install esptool --break-system-packages</code></li>
 </ul>
 </li>
-</ul>
-</li>
-<li>To flash, use the following command:<ul>
+<li>Flash the firmware.<ul>
 <li>For non-merged bin:<ul>
 <li><code>esptool.py -p /dev/ttyUSB0 --chip esp32-s3 write_flash 0x10000 &lt;non-merged_firmware&gt;.bin</code></li>
 </ul>
@@ -3019,32 +3021,50 @@ Below are the instructions to flash firmware onto a supported LoRa device using 
 </li>
 </ul>
 </li>
+</ol>
+<p><strong>Instructions for nRF devices:</strong></p>
+<p>For nRF devices (e.g. RAK, Heltec T114) you need the following:</p>
+<ol>
+<li>Download the firmware file from <a href="https://flasher.meshcore.io">https://flasher.meshcore.io</a>.<ul>
+<li>Go to the website in a browser and find the section that has the firmware you need.</li>
+<li>You need the ZIP version for the adafruit flash tool below.</li>
+<li>Click the Download button, right-click on the ZIP file, for example:<ul>
+<li><code>RAK_4631_companion_radio_ble-v1.7.1-165fb33.zip</code></li>
+</ul>
+</li>
+<li>Right-click on the file name and copy the link. Here is an example: <code>https://flasher.meshcore.io/releases/download/companion-v1.7.1/RAK_4631_companion_radio_ble-v1.7.1-165fb33.zip</code></li>
+<li>Run:<ul>
+<li><code>wget https://flasher.meshcore.io/releases/download/companion-v1.7.1/RAK_4631_companion_radio_ble-v1.7.1-165fb33.zip</code> to download the firmware file for your device type or the version you need: USB, BLE, Repeater, Room Server, ZIP file only.</li>
 </ul>
 </li>
 </ul>
-<p><strong>Instructions for nRF devices:</strong></p>
-<p>For nRF devices (e.g. RAK, Heltec T114) you need the following:
-- Download firmware file from <a href="https://flasher.meshcore.io">https://flasher.meshcore.io</a>
-    - Go to the website on a browser, find the section that has the firmware you need
-    - You need the ZIP version for the adafruit flash tool (below)
-    - Click the Download button, right-click on the ZIP file, for example:
-        - <code>RAK_4631_companion_radio_ble-v1.7.1-165fb33.zip</code>
-        - Right-click on the file name and copy the link and note it for later use here is an example: <code>https://flasher.meshcore.io/releases/download/companion-v1.7.1/RAK_4631_companion_radio_ble-v1.7.1-165fb33.zip</code>
-        - Run:
-        - <code>wget https://flasher.meshcore.io/releases/download/companion-v1.7.1/RAK_4631_companion_radio_ble-v1.7.1-165fb33.zip</code> to download the firmware file for your device type. or the version you need  - USB, BLE, Repeater, Room Server, ZIP file only
-    - Confirm the <code>ttyXXXX</code> device path on your Raspberry Pi:
-        - Go to <code>/dev</code> directory, run ls command to find confirm your device path
-        - They are usually <code>/dev/ttyACM0</code> for nRF devices
-    - For nRF-based devices, install adafruit-nrfutil
-        - <code>pip install adafruit-nrfutil --break-system-packages</code>
-        - Use this command to flash the nRF device:
-            - <code>adafruit-nrfutil --verbose dfu serial --package RAK_4631_companion_radio_usb-v1.7.1-165fb33.zip -p /dev/ttyACM0 -b 115200 --singlebank --touch 1200</code></p>
-<p>To manage a repeater or room server connected to a Pi over USB serial using shell commands, you need to install <code>picocom</code>. To install <code>picocom</code>, run the following command:
-- <code>sudo apt install picocom</code></p>
-<p>To start managing your USB serial-connected device using picocom, use the following command:
-- <code>picocom -b 115200 /dev/ttyUSB0 --imap lfcrlf</code></p>
-<p>From here, reference repeater and room server command line commands in the MeshCore docs here:
-- <a href="https://docs.meshcore.io/cli_commands">https://docs.meshcore.io/cli_commands</a></p>
+</li>
+<li>Confirm the <code>ttyXXXX</code> device path on your Raspberry Pi.<ul>
+<li>Go to the <code>/dev</code> directory and run the <code>ls</code> command to find your device path.</li>
+<li>It is usually <code>/dev/ttyACM0</code> for nRF devices.</li>
+</ul>
+</li>
+<li>Install adafruit-nrfutil.<ul>
+<li><code>pip install adafruit-nrfutil --break-system-packages</code></li>
+</ul>
+</li>
+<li>Flash the nRF device.<ul>
+<li><code>adafruit-nrfutil --verbose dfu serial --package RAK_4631_companion_radio_usb-v1.7.1-165fb33.zip -p /dev/ttyACM0 -b 115200 --singlebank --touch 1200</code></li>
+</ul>
+</li>
+</ol>
+<p>To manage a repeater or room server connected to a Pi over USB serial using shell commands, you need to install <code>picocom</code>. To install <code>picocom</code>, run the following command:</p>
+<ul>
+<li><code>sudo apt install picocom</code></li>
+</ul>
+<p>To start managing your USB serial-connected device using picocom, use the following command:</p>
+<ul>
+<li><code>picocom -b 115200 /dev/ttyUSB0 --imap lfcrlf</code></li>
+</ul>
+<p>From here, reference repeater and room server command line commands in the MeshCore docs here:</p>
+<ul>
+<li><a href="https://docs.meshcore.io/cli_commands">https://docs.meshcore.io/cli_commands</a></li>
+</ul>
 <h3 id="514-q-are-there-projects-built-around-meshcore">5.14. Q: Are there projects built around MeshCore?</h3>
 <p><strong>A:</strong> Yes, there are many. MeshCore's protocol is open source using the MIT license. The MIT license and the open source protocol makes it very easy for the MeshCore community to build new firmware for radios, applications on mobile devices, map tools, and analysis tools, and integration with other projects like Home Assistant.</p>
 <p>As new MeshCore community projects become available on a weekly basis, we have stopped tracking them here in this FAQ. <a href="https://github.com/samuk">samuk</a> maintains a very exhaustive list of MeshCore community project at <a href="https://github.com/samuk/awesome-meshcore/blob/main/README.md">https://github.com/samuk/awesome-meshcore/blob/main/README.md</a>. samuk accepts PRs and merges them regularly.</p>
@@ -3070,9 +3090,9 @@ Below are the instructions to flash firmware onto a supported LoRa device using 
 <h3 id="63-q-how-to-connect-to-a-repeater-via-ble-bluetooth">6.3. Q: How to connect to a repeater via BLE (Bluetooth)?</h3>
 <p><strong>A:</strong> You can't connect to a device running repeater firmware via Bluetooth. You can connect to devices running the BLE companion firmware via Bluetooth using the Android app.</p>
 <h3 id="64-q-my-companion-isnt-showing-up-over-bluetooth">6.4. Q: My companion isn't showing up over Bluetooth?</h3>
-<p><strong>A:</strong> make sure that you flashed the Bluetooth companion firmware and not the USB-only companion firmware.</p>
+<p><strong>A:</strong> Make sure that you flashed the Bluetooth companion firmware and not the USB-only companion firmware.</p>
 <h3 id="65-q-i-cant-connect-via-bluetooth-what-is-the-bluetooth-pairing-code">6.5. Q: I can't connect via Bluetooth, what is the Bluetooth pairing code?</h3>
-<p><strong>A:</strong> the default Bluetooth pairing code is <code>123456</code></p>
+<p><strong>A:</strong> The default Bluetooth pairing code is <code>123456</code></p>
 <h3 id="66-q-my-heltec-v3-keeps-disconnecting-from-my-smartphone-it-cant-hold-a-solid-bluetooth-connection">6.6. Q: My Heltec V3 keeps disconnecting from my smartphone. It can't hold a solid Bluetooth connection.</h3>
 <p><strong>A:</strong> Heltec V3 has a very small coil antenna on its PCB for Wi-Fi and Bluetooth connectivity. It has a very short range, only a few feet. It is possible to remove the coil antenna and replace it with a 31mm wire. The BT range is much improved with the modification.</p>
 <h3 id="67-q-my-rakt1000-exiao_nrf52-device-seems-to-be-corrupted-how-do-i-wipe-it-clean-to-start-fresh">6.7. Q: My RAK/T1000-E/xiao_nRF52 device seems to be corrupted, how do I wipe it clean to start fresh?</h3>
