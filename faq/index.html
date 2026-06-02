@@ -2810,15 +2810,17 @@ The original MeshCore protocol design uses the first byte of a repeater's public
 <h3 id="41-q-is-there-a-user-guide-for-t-deck-t-pager-t-watch-or-t-display-pro">4.1. Q: Is there a user guide for T-Deck, T-Pager, T-Watch, or T-Display Pro?</h3>
 <p><strong>A:</strong> Yes, it is available on <a href="https://buymeacoffee.com/ripplebiz/ultra-v7-7-guide-meshcore-users">https://buymeacoffee.com/ripplebiz/ultra-v7-7-guide-meshcore-users</a></p>
 <h3 id="42-q-what-are-the-steps-to-get-a-t-deck-into-dfu-device-firmware-update-mode">4.2. Q: What are the steps to get a T-Deck into DFU (Device Firmware Update) mode?</h3>
-<p><strong>A:</strong>
-1. Device off
-2. Connect USB cable to device
-3. Hold down trackball (keep holding)
-4. Turn on device
-5. Hear USB connection sound
-6. Release trackball
-7. T-Deck in DFU mode now
-8. At this point you can begin flashing using <a href="https://flasher.meshcore.io">https://flasher.meshcore.io</a></p>
+<p><strong>A:</strong></p>
+<ol>
+<li>Device off</li>
+<li>Connect USB cable to device</li>
+<li>Hold down trackball (keep holding)</li>
+<li>Turn on device</li>
+<li>Hear USB connection sound</li>
+<li>Release trackball</li>
+<li>T-Deck in DFU mode now</li>
+<li>At this point you can begin flashing using <a href="https://flasher.meshcore.io">https://flasher.meshcore.io</a></li>
+</ol>
 <h3 id="43-q-why-is-my-t-deck-plus-not-getting-any-satellite-lock">4.3. Q: Why is my T-Deck Plus not getting any satellite lock?</h3>
 <p><strong>A:</strong> For T-Deck Plus, the GPS baud rate should be set to <strong>38400</strong>. Also, some T-Deck Plus devices were found to have the GPS module installed upside down, with the GPS antenna facing down instead of up. If your T-Deck Plus still doesn't get any satellite lock after setting the baud rate to 38400, you might need to open the device to check the GPS orientation.</p>
 <p>GPS on T-Deck is always enabled. You can skip the "GPS clock sync" and the T-Deck will continue to try to get a GPS lock. You can go to the <code>GPS Info</code> screen; you should see the <code>Sentences:</code> counter increasing if the baud rate is correct.</p>
@@ -3083,9 +3085,11 @@ Below are the instructions to flash firmware onto a supported LoRa device using 
 <h2 id="6-troubleshooting">6. Troubleshooting</h2>
 <h3 id="61-q-my-client-says-another-client-or-a-repeater-or-a-room-server-was-last-seen-many-many-days-ago">6.1. Q: My client says another client or a repeater or a room server was last seen many, many days ago.</h3>
 <h3 id="62-q-a-repeater-or-a-client-or-a-room-server-i-expect-to-see-on-my-discover-list-on-t-deck-or-contact-list-on-a-smart-device-client-are-not-listed">6.2. Q: A repeater or a client or a room server I expect to see on my discover list (on T-Deck) or contact list (on a smart device client) are not listed.</h3>
-<p><strong>A:</strong>
-- If your client is a T-Deck, it may not have its time set (no GPS installed, no GPS lock, or wrong GPS baud rate).
-- If you are using the Android or iOS client, the other client, repeater, or room server may have the wrong time.</p>
+<p><strong>A:</strong></p>
+<ul>
+<li>If your client is a T-Deck, it may not have its time set (no GPS installed, no GPS lock, or wrong GPS baud rate).</li>
+<li>If you are using the Android or iOS client, the other client, repeater, or room server may have the wrong time.</li>
+</ul>
 <p>You can get the epoch time on <a href="https://www.epochconverter.com">https://www.epochconverter.com</a> and use it to set your T-Deck clock. For a repeater and room server, the admin can use a T-Deck to remotely set their clock (clock sync), or use the <code>time</code> command in the USB serial console with the server device connected.</p>
 <h3 id="63-q-how-to-connect-to-a-repeater-via-ble-bluetooth">6.3. Q: How to connect to a repeater via BLE (Bluetooth)?</h3>
 <p><strong>A:</strong> You can't connect to a device running repeater firmware via Bluetooth. You can connect to devices running the BLE companion firmware via Bluetooth using the Android app.</p>
@@ -3177,14 +3181,11 @@ Below are the instructions to flash firmware onto a supported LoRa device using 
 - RAK 4631
 - RAK WisMesh Tag (new 28/11/2025)</p>
 <h3 id="74-q-are-the-meshcore-logo-and-font-available">7.4. Q: Are the MeshCore logo and font available?</h3>
-<p><strong>A:</strong> Yes, it is on the MeshCore GitHub repo here:
-<a href="https://github.com/meshcore-dev/MeshCore/tree/main/logo">https://github.com/meshcore-dev/MeshCore/tree/main/logo</a></p>
+<p><strong>A:</strong> Yes, it is on the MeshCore GitHub repo here: <a href="https://github.com/meshcore-dev/MeshCore/tree/main/logo">https://github.com/meshcore-dev/MeshCore/tree/main/logo</a></p>
 <h3 id="75-q-what-is-the-format-of-a-contact-or-channel-qr-code">7.5. Q: What is the format of a contact or channel QR code?</h3>
 <p><strong>A:</strong>
-Channel:
-<code>meshcore://channel/add?name=&lt;name&gt;&amp;secret=&lt;secret&gt;</code></p>
-<p>Contact:
-<code>meshcore://contact/add?name=&lt;name&gt;&amp;public_key=&lt;secret&gt;&amp;type=&lt;type&gt;</code></p>
+Channel: <code>meshcore://channel/add?name=&lt;name&gt;&amp;secret=&lt;secret&gt;</code></p>
+<p>Contact: <code>meshcore://contact/add?name=&lt;name&gt;&amp;public_key=&lt;secret&gt;&amp;type=&lt;type&gt;</code></p>
 <p>where <code>&amp;type</code> is:
 <code>chat = 1</code>
 <code>repeater = 2</code>
