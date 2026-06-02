@@ -3134,14 +3134,16 @@ Below are the instructions to flash firmware onto a supported LoRa device using 
 <a href="https://github.com/oltaco/Adafruit_nRF52_Bootloader_OTAFIX">https://github.com/oltaco/Adafruit_nRF52_Bootloader_OTAFIX</a></p>
 <p>After this bootloader is flashed onto the device, you can trigger an over-the-air update using Bluetooth by holding the button next to the D-Pad and then clicking the reset button. Then follow the same OTA update instructions above. You can skip the <code>start ota</code> instruction and start the update using the DFU app.</p>
 <h3 id="72-q-how-to-update-esp32-based-devices-over-the-air">7.2. Q: How to update ESP32-based devices over the air?</h3>
-<p><strong>A:</strong> For ESP32-based devices (e.g. Heltec V3):
-1. On <a href="https://flasher.meshcore.io">https://flasher.meshcore.io</a>, download the <strong>non-merged</strong> version of the firmware for your ESP32 device (e.g. <code>Heltec_v3_repeater-v1.6.2-4449fd3.bin</code>, no <code>"merged"</code> in the file name)
-2. From the MeshCore app, log in remotely to the repeater you want to update with admin privileges
-3. Go to the Command Line tab, type <code>start ota</code> and hit enter.
-4. you should see <code>OK</code> to confirm the repeater device is now in OTA mode
-5. The command <code>start ota</code> on an ESP32-based device starts a Wi-Fi hotspot named <code>MeshCore OTA</code>
-6. From your phone or computer connect to the 'MeshCore OTA' hotspot
-7. From a browser, go to <a href="http://192.168.4.1/update">http://192.168.4.1/update</a> and upload the non-merged bin from the flasher</p>
+<p><strong>A:</strong> For ESP32-based devices (e.g. Heltec V3):</p>
+<ol>
+<li>On <a href="https://flasher.meshcore.io">https://flasher.meshcore.io</a>, download the <strong>non-merged</strong> version of the firmware for your ESP32 device (e.g. <code>Heltec_v3_repeater-v1.6.2-4449fd3.bin</code>, no <code>"merged"</code> in the file name).</li>
+<li>From the MeshCore app, log in remotely to the repeater you want to update with admin privileges.</li>
+<li>Go to the Command Line tab, type <code>start ota</code> and hit enter.</li>
+<li>You should see <code>OK</code> to confirm the repeater device is now in OTA mode.</li>
+<li>The command <code>start ota</code> on an ESP32-based device starts a Wi-Fi hotspot named <code>MeshCore OTA</code>.</li>
+<li>From your phone or computer connect to the 'MeshCore OTA' hotspot.</li>
+<li>From a browser, go to <a href="http://192.168.4.1/update">http://192.168.4.1/update</a> and upload the non-merged bin from the flasher.</li>
+</ol>
 <h3 id="73-q-is-there-a-way-to-lower-the-chance-of-a-failed-ota-device-firmware-update-dfu">7.3. Q: Is there a way to lower the chance of a failed OTA device firmware update (DFU)?</h3>
 <p><strong>A:</strong> Yes, developer <code>che aporeps</code> has an enhanced OTA DFU bootloader for nRF52 based devices. With this bootloader, if it detects that the application firmware is invalid, it falls back to OTA DFU mode so you can attempt to flash again to recover. This bootloader has other changes to make the OTA DFU process more fault tolerant.</p>
 <p>Refer to <a href="https://github.com/oltaco/Adafruit_nRF52_Bootloader_OTAFIX">https://github.com/oltaco/Adafruit_nRF52_Bootloader_OTAFIX</a> for the latest information.</p>
